@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -44,4 +48,7 @@ dependencies {
     // sdp & ssp library for support all sizes on the screen
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
+    // media3-exoplayer library for playing videos
+    implementation "androidx.media3:media3-exoplayer:1.1.0"
+    implementation "androidx.media3:media3-ui:1.1.0"
 }
