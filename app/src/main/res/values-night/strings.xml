@@ -1,7 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Phood</string>
     <string name="login_headline">Explore the world of recipes</string>
-    <string name="password">Password</string>
     <string name="brightskies_password">Brightskies</string>
     <string name="mohamed_salah_email">mohamed.salah@phood.com</string>
     <string name="email">Email</string>
