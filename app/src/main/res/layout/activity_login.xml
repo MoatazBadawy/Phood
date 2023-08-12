@@ -41,7 +41,7 @@
         <View
             android:id="@+id/content_background_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_230sdp"
+            android:layout_height="@dimen/_260sdp"
             android:background="@drawable/img_shadow_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

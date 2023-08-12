@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Phood" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/main_color</item>
+         <item name="colorPrimary">#F8F8F8</item>
 
-        <item name="android:windowBackground">@drawable/ic_launcher_background</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.Phood" parent="Base.Theme.Phood" />
