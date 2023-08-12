@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -31,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    kapt {
+        generateStubs = true
+    }
     dataBinding {
         enabled = true
     }
@@ -46,9 +51,25 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     // sdp & ssp library for support all sizes on the screen
-    implementation 'com.intuit.sdp:sdp-android:1.1.0'
-    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+    implementation "com.intuit.sdp:sdp-android:$sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$ssp_version"
     // media3-exoplayer library for playing videos
-    implementation "androidx.media3:media3-exoplayer:1.1.0"
-    implementation "androidx.media3:media3-ui:1.1.0"
+    implementation "androidx.media3:media3-exoplayer:$media3_version"
+    implementation "androidx.media3:media3-ui:$media3_version"
+    // dagger hilt dependencies for dependency injection
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    // datastore for saving data in the local storage
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
+    // mockito for testing purposes
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    // lifecycle scope for observing data
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    // ktx for kotlin extensions
+    implementation 'androidx.activity:activity-ktx:1.7.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+    // navigation component for navigating between fragments
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 }

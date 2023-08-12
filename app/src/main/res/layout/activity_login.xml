@@ -4,12 +4,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.moataz.phood.identity.ui.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/login_image_background"
@@ -71,6 +74,8 @@
             app:boxCornerRadiusTopEnd="@dimen/_12sdp"
             app:boxCornerRadiusTopStart="@dimen/_12sdp"
             app:boxStrokeColor="@color/selector"
+            app:errorMessage="@{@string/email_error_message}"
+            app:isFieldValid="@{viewModel.isEmailValid}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/headline_textview">
@@ -80,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
                 android:inputType="text"
-                android:text="@string/mohamed_salah_email"
+                android:text="@={viewModel.email}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -98,6 +103,8 @@
             app:boxCornerRadiusTopEnd="@dimen/_12sdp"
             app:boxCornerRadiusTopStart="@dimen/_12sdp"
             app:boxStrokeColor="@color/selector"
+            app:errorMessage="@{@string/password_error_message}"
+            app:isFieldValid="@{viewModel.isPasswordValid}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_email_input">
@@ -107,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="@string/brightskies_password"
+                android:text="@={viewModel.password}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -119,14 +126,18 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_1sdp"
             android:background="@drawable/shp_login_button_background"
+            android:onClick="@{() -> viewModel.onLoginClicked()}"
             android:text="@string/login"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/login_image_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_password_input" />
+            app:layout_constraintTop_toBottomOf="@+id/login_password_input"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
