@@ -8,7 +8,6 @@ internal fun Recipe.toRecipeUIModel(): RecipeUI {
         id = id,
         name = name,
         image = image,
-        difficulty = difficulty,
         headline = headline,
         fats = fats,
         carbos = carbos,

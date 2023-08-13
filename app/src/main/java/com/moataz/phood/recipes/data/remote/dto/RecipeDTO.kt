@@ -9,8 +9,6 @@ data class RecipeDTO(
     val name: String?,
     @SerializedName("image")
     val image: String?,
-    @SerializedName("difficulty")
-    val difficulty: Int?,
     @SerializedName("headline")
     val headline: String?,
     @SerializedName("fats")
