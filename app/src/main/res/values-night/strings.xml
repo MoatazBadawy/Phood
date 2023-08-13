@@ -17,4 +17,7 @@
     <string name="veggie_box">Veggie Box</string>
     <string name="favourites_recipes_button">Favourites Recipes Button</string>
     <string name="search_recipes_button">Search Recipes Button</string>
+    <string name="food_image">Food Image</string>
+    <string name="error_message">Something went wrong, please try again</string>
+    <string name="error_icon">Error Icon</string>
 </resources>

@@ -7,14 +7,16 @@
 
         <variable
             name="recipe"
-            type="" />
+            type="com.moataz.phood.recipes.ui.viewmodel.model.RecipeUI" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         android:background="@color/white"
         app:cardCornerRadius="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +28,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
+                android:contentDescription="@string/food_image"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{recipe.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -36,8 +40,8 @@
 
             <View
                 android:id="@+id/view"
-                android:layout_width="29dp"
-                android:layout_height="13dp"
+                android:layout_width="36dp"
+                android:layout_height="18dp"
                 android:layout_marginEnd="6dp"
                 android:layout_marginBottom="9dp"
                 android:background="#59000000"
@@ -47,8 +51,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{recipe.time}"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_8ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="@+id/view"
                 app:layout_constraintStart_toStartOf="@+id/view"
@@ -64,6 +69,7 @@
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="@{recipe.name}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold"
@@ -75,13 +81,14 @@
 
             <TextView
                 android:id="@+id/recipe_info_textview"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginBottom="8dp"
                 android:lineSpacingExtra="4dp"
+                android:text="@{recipe.headline}"
                 android:textColor="#B3B3B3"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
