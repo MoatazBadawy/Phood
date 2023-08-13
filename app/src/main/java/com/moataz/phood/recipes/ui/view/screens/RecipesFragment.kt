@@ -52,6 +52,7 @@ class RecipesFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.recipesUiState.collect { recipesUIState ->
                 recipesAdapter.setItems(recipesUIState.recipes)
+                binding.recipesRecyclerView.scrollToPosition(0)
             }
         }
     }
