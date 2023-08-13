@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.moataz.phood.recipes.ui.viewmodel.RecipesViewModel" />
+
+        <variable
+            name="recipeType"
+            type="com.moataz.phood.recipes.ui.viewmodel.enums.RecipesTypes" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,7 +99,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.getRecipes()}"
+                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.ALL)}"
                     android:text="@string/all"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -105,6 +109,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.FAMILY_BOX)}"
                     android:text="@string/family_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -114,6 +119,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.CLASSIC_BOX)}"
                     android:text="@string/classic_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -123,6 +129,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.VEGGIE_BOX)}"
                     android:text="@string/veggie_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />

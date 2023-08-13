@@ -13,4 +13,5 @@ data class Recipe(
     val description: String,
     val time: String,
     val ingredients: List<String>,
+    val products: List<String>,
 )

@@ -27,4 +27,6 @@ data class RecipeDTO(
     val time: String?,
     @SerializedName("ingredients")
     val ingredients: List<String>?,
+    @SerializedName("products")
+    val products: List<String>?,
 )

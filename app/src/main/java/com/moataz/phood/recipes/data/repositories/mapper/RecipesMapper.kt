@@ -17,6 +17,7 @@ internal fun RecipeDTO.toRecipe(): Recipe {
         description = description ?: "",
         time = time ?: "",
         ingredients = ingredients ?: emptyList(),
+        products = products ?: emptyList(),
     )
 }
 
