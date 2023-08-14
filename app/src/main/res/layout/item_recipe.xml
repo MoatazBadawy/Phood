@@ -8,6 +8,10 @@
         <variable
             name="recipe"
             type="com.moataz.phood.recipes.ui.viewmodel.model.RecipeUI" />
+
+        <variable
+            name="listener"
+            type="com.moataz.phood.recipes.ui.viewmodel.RecipesClicksListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,6 +22,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
         android:background="@color/white"
+        android:onClick="@{(v)-> listener.onRecipeClicked(recipe.id)}"
         app:cardCornerRadius="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

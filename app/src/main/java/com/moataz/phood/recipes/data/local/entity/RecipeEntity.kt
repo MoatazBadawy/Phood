@@ -19,4 +19,5 @@ data class RecipeEntity(
     val time: String,
     val ingredients: List<String>,
     val recipeType: String,
+    val isFavorite: Boolean = false,
 )

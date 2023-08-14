@@ -8,10 +8,12 @@ import com.moataz.phood.recipes.ui.viewmodel.mapper.toRecipesUIModel
 import com.moataz.phood.recipes.ui.viewmodel.model.RecipesUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,12 +21,18 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipesViewModel @Inject constructor(
     private val getRecipesUseCase: GetRecipesByCategoriesUseCase,
-) : ViewModel() {
+) : ViewModel(), RecipesClicksListener {
 
     private val _recipesUiState = MutableStateFlow(RecipesUIState())
     val recipesUiState get() = _recipesUiState.asStateFlow()
 
     private val currentRecipeType = MutableStateFlow(RecipesTypes.ALL)
+
+    private val _onRecipeClicked = Channel<Boolean>()
+    val onRecipeClicked get() = _onRecipeClicked.receiveAsFlow()
+
+    private val _recipeId = MutableStateFlow("")
+    val recipeId get() = _recipeId.asStateFlow()
 
     init {
         getRecipes()
@@ -62,6 +70,13 @@ class RecipesViewModel @Inject constructor(
     fun onChipTypeClicked(recipeType: RecipesTypes) {
         if (recipeType != currentRecipeType.value) {
             currentRecipeType.value = recipeType
+        }
+    }
+
+    override fun onRecipeClicked(recipeId: String) {
+        viewModelScope.launch {
+            _onRecipeClicked.send(true)
+            _recipeId.value = recipeId
         }
     }
 }

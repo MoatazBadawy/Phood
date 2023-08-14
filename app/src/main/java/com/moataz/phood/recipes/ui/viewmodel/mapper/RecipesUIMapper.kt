@@ -16,6 +16,7 @@ internal fun Recipe.toRecipeUIModel(): RecipeUI {
         description = description,
         time = time,
         ingredients = ingredients,
+        isFavorite = isFavorite,
     )
 }
 

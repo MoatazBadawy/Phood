@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.moataz.phood.R
 import com.moataz.phood.databinding.ItemRecipeBinding
+import com.moataz.phood.recipes.ui.viewmodel.RecipesClicksListener
 import com.moataz.phood.recipes.ui.viewmodel.model.RecipeUI
 
 class RecipesAdapter(
     private var recipes: List<RecipeUI>,
+    private val viewModel: RecipesClicksListener,
 ) : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
 
     fun setItems(newItems: List<RecipeUI>) {
@@ -40,6 +42,7 @@ class RecipesAdapter(
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
         holder.binding.run {
             recipe = recipes[position]
+            listener = viewModel
         }
     }
 

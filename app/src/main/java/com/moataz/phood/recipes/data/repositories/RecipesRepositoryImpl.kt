@@ -3,6 +3,7 @@ package com.moataz.phood.recipes.data.repositories
 import com.moataz.phood.recipes.data.local.RecipesDao
 import com.moataz.phood.recipes.data.remote.RecipesService
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipeEntity
+import com.moataz.phood.recipes.data.repositories.mapper.toRecipeLocal
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipesLocal
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipesRemote
 import com.moataz.phood.recipes.data.repositories.utils.NetworkHelper
@@ -52,5 +53,15 @@ class RecipesRepositoryImpl @Inject constructor(
         return recipesLocalDatabase.getAllRecipes().map { recipesEntities ->
             recipesEntities.toRecipesLocal()
         }
+    }
+
+    override fun getRecipeDetailsById(id: String): Flow<Recipe> {
+        return recipesLocalDatabase.getRecipeDetailsById(id).map { recipeEntity ->
+            recipeEntity.toRecipeLocal()
+        }
+    }
+
+    override suspend fun setRecipeFavoriteStatus(id: String, isFavorite: Boolean) {
+        recipesLocalDatabase.setRecipeFavoriteStatus(id, isFavorite)
     }
 }

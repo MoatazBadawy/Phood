@@ -13,4 +13,5 @@ data class Recipe(
     val time: String,
     val ingredients: List<String>,
     val products: List<String>,
+    val isFavorite: Boolean,
 )

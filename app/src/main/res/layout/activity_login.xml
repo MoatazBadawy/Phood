@@ -107,16 +107,19 @@
             app:isFieldValid="@{viewModel.isPasswordValid}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_email_input">
+            app:layout_constraintTop_toBottomOf="@+id/login_email_input"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:maxLines="1"
                 android:text="@={viewModel.password}"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_12ssp"
+                app:passwordToggleTint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton

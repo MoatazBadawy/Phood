@@ -22,14 +22,15 @@ internal fun RecipeDTO.toRecipe(): Recipe {
         time = time ?: "",
         ingredients = ingredients ?: emptyList(),
         products = products ?: emptyList(),
+        isFavorite = false,
     )
 }
 
 internal fun List<RecipeEntity>.toRecipesLocal(): List<Recipe> {
-    return map { recipeDTO -> recipeDTO.toRecipe() }
+    return map { recipeDTO -> recipeDTO.toRecipeLocal() }
 }
 
-internal fun RecipeEntity.toRecipe(): Recipe {
+internal fun RecipeEntity.toRecipeLocal(): Recipe {
     return Recipe(
         id = id,
         name = name,
@@ -43,6 +44,7 @@ internal fun RecipeEntity.toRecipe(): Recipe {
         time = time,
         ingredients = ingredients,
         products = listOf(recipeType),
+        isFavorite = isFavorite,
     )
 }
 

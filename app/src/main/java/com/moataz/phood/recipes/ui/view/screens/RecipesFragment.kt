@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.moataz.phood.R
 import com.moataz.phood.databinding.FragmentRecipesBinding
 import com.moataz.phood.recipes.ui.view.adapters.RecipesAdapter
@@ -44,7 +47,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        recipesAdapter = RecipesAdapter(emptyList())
+        recipesAdapter = RecipesAdapter(emptyList(), viewModel)
         binding.recipesRecyclerView.adapter = recipesAdapter
     }
 
@@ -55,5 +58,23 @@ class RecipesFragment : Fragment() {
                 binding.recipesRecyclerView.scrollToPosition(0)
             }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.onRecipeClicked.collect {
+                    if (it) {
+                        viewModel.recipeId.collect { recipeId ->
+                            navigateToDetailsScreen(recipeId)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun navigateToDetailsScreen(recipeId: String) {
+        findNavController().navigate(
+            RecipesFragmentDirections.actionRecipesFragmentToRecipeDetailsFragment(recipeId),
+        )
     }
 }

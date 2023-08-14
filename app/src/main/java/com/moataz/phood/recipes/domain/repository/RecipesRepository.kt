@@ -10,4 +10,6 @@ interface RecipesRepository {
     suspend fun cachingRecipes()
     fun getRecipesByCategoryFromLocal(recipeType: String): Flow<List<Recipe>>
     fun getAllRecipesTypesFromLocal(): Flow<List<Recipe>>
+    fun getRecipeDetailsById(id: String): Flow<Recipe>
+    suspend fun setRecipeFavoriteStatus(id: String, isFavorite: Boolean)
 }

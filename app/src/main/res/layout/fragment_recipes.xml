@@ -54,7 +54,7 @@
                 android:padding="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_favorite"
+                app:srcCompat="@drawable/ic_favorite_black"
                 tools:ignore="RtlHardcoded" />
 
             <ImageButton
@@ -99,7 +99,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.ALL)}"
+                    android:onClick="@{(v) -> viewModel.onChipTypeClicked(recipeType.ALL)}"
                     android:text="@string/all"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -109,7 +109,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.FAMILY_BOX)}"
+                    android:onClick="@{(v) -> viewModel.onChipTypeClicked(recipeType.FAMILY_BOX)}"
                     android:text="@string/family_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -119,7 +119,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.CLASSIC_BOX)}"
+                    android:onClick="@{(v) -> viewModel.onChipTypeClicked(recipeType.CLASSIC_BOX)}"
                     android:text="@string/classic_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
@@ -129,7 +129,7 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.onChipTypeClicked(recipeType.VEGGIE_BOX)}"
+                    android:onClick="@{(v) -> viewModel.onChipTypeClicked(recipeType.VEGGIE_BOX)}"
                     android:text="@string/veggie_box"
                     app:chipCornerRadius="@dimen/_10sdp"
                     app:chipStrokeColor="@android:color/transparent" />
