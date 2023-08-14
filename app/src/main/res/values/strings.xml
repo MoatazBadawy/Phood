@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">Phood</string>
+    <string name="app_name">Phood: Recipes App</string>
+    <string name="login_headline">Explore the world of recipes</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="login_shadow_background">shadow background</string>
+    <string name="email_error_message">Please enter a valid email address</string>
+    <string name="password_error_message">Please enter a valid password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phood">Phood</string>
+    <string name="search_hint">Search for your favorites recipes</string>
+    <string name="recipes">Recipes</string>
+    <string name="all">All</string>
+    <string name="family_box">Family Box</string>
+    <string name="classic_box">Classic Box</string>
+    <string name="veggie_box">Veggie Box</string>
+    <string name="favourites_recipes_button">Favourites Recipes Button</string>
+    <string name="search_recipes_button">Search Recipes Button</string>
+    <string name="food_image">Food Image</string>
+    <string name="error_message">Something went wrong, please try again</string>
+    <string name="error_icon">Error Icon</string>
+    <string name="recipe_details_background">recipe details background</string>
+    <string name="fats">Fats</string>
+    <string name="carbos">Carbos</string>
+    <string name="calories">Calories</string>
+    <string name="proteins">Proteins</string>
+    <string name="description">Description</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="favourites">Favourites</string>
 </resources>
