@@ -51,6 +51,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/circle_button_style"
                 android:contentDescription="@string/favourites_recipes_button"
+                android:onClick="@{() -> viewModel.onRecipesFavouritesClicked()}"
                 android:padding="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

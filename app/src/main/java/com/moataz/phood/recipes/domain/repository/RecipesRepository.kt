@@ -12,4 +12,5 @@ interface RecipesRepository {
     fun getAllRecipesTypesFromLocal(): Flow<List<Recipe>>
     fun getRecipeDetailsById(id: String): Flow<Recipe>
     suspend fun setRecipeFavoriteStatus(id: String, isFavorite: Boolean)
+    fun getRecipesFavourites(): Flow<List<Recipe>>
 }

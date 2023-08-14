@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_recipeDetailsFragment"
             app:destination="@id/recipeDetailsFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesFavouritesFragment"
+            app:destination="@id/recipesFavouritesFragment" />
     </fragment>
 
     <fragment
@@ -24,5 +27,14 @@
         <argument
             android:name="recipeId"
             app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/recipesFavouritesFragment"
+        android:name="com.moataz.phood.recipes.ui.view.screens.RecipesFavouritesFragment"
+        android:label="RecipesFavouritesFragment"
+        tools:layout="@layout/fragment_recipes_favourites" >
+        <action
+            android:id="@+id/action_recipesFavouritesFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
     </fragment>
 </navigation>

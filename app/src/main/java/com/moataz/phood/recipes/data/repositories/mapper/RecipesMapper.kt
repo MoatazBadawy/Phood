@@ -26,7 +26,7 @@ internal fun RecipeDTO.toRecipe(): Recipe {
     )
 }
 
-internal fun List<RecipeEntity>.toRecipesLocal(): List<Recipe> {
+internal fun List<RecipeEntity>.toRecipesDomain(): List<Recipe> {
     return map { recipeDTO -> recipeDTO.toRecipeLocal() }
 }
 

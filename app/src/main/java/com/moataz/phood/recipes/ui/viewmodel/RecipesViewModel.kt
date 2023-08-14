@@ -31,6 +31,9 @@ class RecipesViewModel @Inject constructor(
     private val _onRecipeClicked = Channel<Boolean>()
     val onRecipeClicked get() = _onRecipeClicked.receiveAsFlow()
 
+    private val _onRecipesFavouritesClicked = Channel<Boolean>()
+    val onRecipesFavouritesClicked get() = _onRecipesFavouritesClicked.receiveAsFlow()
+
     private val _recipeId = MutableStateFlow("")
     val recipeId get() = _recipeId.asStateFlow()
 
@@ -70,6 +73,12 @@ class RecipesViewModel @Inject constructor(
     fun onChipTypeClicked(recipeType: RecipesTypes) {
         if (recipeType != currentRecipeType.value) {
             currentRecipeType.value = recipeType
+        }
+    }
+
+    fun onRecipesFavouritesClicked() {
+        viewModelScope.launch {
+            _onRecipesFavouritesClicked.send(true)
         }
     }
 

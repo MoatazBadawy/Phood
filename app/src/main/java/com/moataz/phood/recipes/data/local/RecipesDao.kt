@@ -29,4 +29,7 @@ interface RecipesDao {
 
     @Query("UPDATE RECIPE_TABLE SET isFavorite = :isFavorite WHERE id = :id")
     suspend fun setRecipeFavoriteStatus(id: String, isFavorite: Boolean)
+
+    @Query("SELECT * FROM RECIPE_TABLE WHERE isFavorite = 1")
+    fun getRecipesFavourites(): Flow<List<RecipeEntity>>
 }

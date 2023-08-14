@@ -4,7 +4,7 @@ import com.moataz.phood.recipes.data.local.RecipesDao
 import com.moataz.phood.recipes.data.remote.RecipesService
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipeEntity
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipeLocal
-import com.moataz.phood.recipes.data.repositories.mapper.toRecipesLocal
+import com.moataz.phood.recipes.data.repositories.mapper.toRecipesDomain
 import com.moataz.phood.recipes.data.repositories.mapper.toRecipesRemote
 import com.moataz.phood.recipes.data.repositories.utils.NetworkHelper
 import com.moataz.phood.recipes.domain.entities.Recipe
@@ -45,13 +45,13 @@ class RecipesRepositoryImpl @Inject constructor(
 
     override fun getRecipesByCategoryFromLocal(recipeType: String): Flow<List<Recipe>> {
         return recipesLocalDatabase.getRecipesByCategory(recipeType).map { recipesEntities ->
-            recipesEntities.toRecipesLocal()
+            recipesEntities.toRecipesDomain()
         }
     }
 
     override fun getAllRecipesTypesFromLocal(): Flow<List<Recipe>> {
         return recipesLocalDatabase.getAllRecipes().map { recipesEntities ->
-            recipesEntities.toRecipesLocal()
+            recipesEntities.toRecipesDomain()
         }
     }
 
@@ -63,5 +63,11 @@ class RecipesRepositoryImpl @Inject constructor(
 
     override suspend fun setRecipeFavoriteStatus(id: String, isFavorite: Boolean) {
         recipesLocalDatabase.setRecipeFavoriteStatus(id, isFavorite)
+    }
+
+    override fun getRecipesFavourites(): Flow<List<Recipe>> {
+        return recipesLocalDatabase.getRecipesFavourites().map { recipesEntities ->
+            recipesEntities.toRecipesDomain()
+        }
     }
 }

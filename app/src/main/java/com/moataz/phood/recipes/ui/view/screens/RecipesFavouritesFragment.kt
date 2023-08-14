@@ -12,17 +12,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.moataz.phood.R
-import com.moataz.phood.databinding.FragmentRecipesBinding
+import com.moataz.phood.databinding.FragmentRecipesFavouritesBinding
 import com.moataz.phood.recipes.ui.view.adapters.RecipesAdapter
-import com.moataz.phood.recipes.ui.viewmodel.RecipesViewModel
+import com.moataz.phood.recipes.ui.viewmodel.RecipesFavouritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment() {
-    private val viewModel: RecipesViewModel by viewModels()
+class RecipesFavouritesFragment : Fragment() {
+    private val viewModel: RecipesFavouritesViewModel by viewModels()
     private lateinit var recipesAdapter: RecipesAdapter
-    private lateinit var binding: FragmentRecipesBinding
+    private lateinit var binding: FragmentRecipesFavouritesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +31,7 @@ class RecipesFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_recipes,
+            R.layout.fragment_recipes_favourites,
             container,
             false,
         )
@@ -53,8 +53,8 @@ class RecipesFragment : Fragment() {
 
     private fun observeEvents() {
         lifecycleScope.launch {
-            viewModel.recipesUiState.collect { recipesUIState ->
-                recipesAdapter.setItems(recipesUIState.recipes)
+            viewModel.recipesFavouritesUiState.collect { recipesFavouritesUiState ->
+                recipesAdapter.setItems(recipesFavouritesUiState.recipes)
                 binding.recipesRecyclerView.scrollToPosition(0)
             }
         }
@@ -73,9 +73,9 @@ class RecipesFragment : Fragment() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.onRecipesFavouritesClicked.collect {
+                viewModel.isBackClicked.collect {
                     if (it) {
-                        navigateToFavouritesScreen()
+                        findNavController().popBackStack()
                     }
                 }
             }
@@ -84,13 +84,9 @@ class RecipesFragment : Fragment() {
 
     private fun navigateToDetailsScreen(recipeId: String) {
         findNavController().navigate(
-            RecipesFragmentDirections.actionRecipesFragmentToRecipeDetailsFragment(recipeId),
-        )
-    }
-
-    private fun navigateToFavouritesScreen() {
-        findNavController().navigate(
-            RecipesFragmentDirections.actionRecipesFragmentToRecipesFavouritesFragment(),
+            RecipesFavouritesFragmentDirections.actionRecipesFavouritesFragmentToRecipeDetailsFragment(
+                recipeId,
+            ),
         )
     }
 }
