@@ -68,6 +68,7 @@
                 android:background="@drawable/circle_button_style"
                 android:contentDescription="@string/search_recipes_button"
                 android:padding="6dp"
+                android:onClick="@{() -> viewModel.onRecipesSearchClicked()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_search"

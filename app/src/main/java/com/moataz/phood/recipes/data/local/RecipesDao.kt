@@ -32,4 +32,7 @@ interface RecipesDao {
 
     @Query("SELECT * FROM RECIPE_TABLE WHERE isFavorite = 1")
     fun getRecipesFavourites(): Flow<List<RecipeEntity>>
+
+    @Query("SELECT * FROM RECIPE_TABLE WHERE name LIKE '%' || :searchQuery || '%'")
+    fun searchRecipes(searchQuery: String): Flow<List<RecipeEntity>>
 }

@@ -34,6 +34,9 @@ class RecipesViewModel @Inject constructor(
     private val _onRecipesFavouritesClicked = Channel<Boolean>()
     val onRecipesFavouritesClicked get() = _onRecipesFavouritesClicked.receiveAsFlow()
 
+    private val _onRecipesSearchClicked = Channel<Boolean>()
+    val onRecipesSearchClicked get() = _onRecipesSearchClicked.receiveAsFlow()
+
     private val _recipeId = MutableStateFlow("")
     val recipeId get() = _recipeId.asStateFlow()
 
@@ -79,6 +82,12 @@ class RecipesViewModel @Inject constructor(
     fun onRecipesFavouritesClicked() {
         viewModelScope.launch {
             _onRecipesFavouritesClicked.send(true)
+        }
+    }
+
+    fun onRecipesSearchClicked() {
+        viewModelScope.launch {
+            _onRecipesSearchClicked.send(true)
         }
     }
 

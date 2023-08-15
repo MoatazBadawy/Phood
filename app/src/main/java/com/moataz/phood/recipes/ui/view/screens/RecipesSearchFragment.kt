@@ -1,9 +1,11 @@
 package com.moataz.phood.recipes.ui.view.screens
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,17 +14,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.moataz.phood.R
-import com.moataz.phood.databinding.FragmentRecipesBinding
+import com.moataz.phood.databinding.FragmentRecipesSearchBinding
 import com.moataz.phood.recipes.ui.view.adapters.RecipesAdapter
-import com.moataz.phood.recipes.ui.viewmodel.RecipesViewModel
+import com.moataz.phood.recipes.ui.viewmodel.RecipesSearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment() {
-    private val viewModel: RecipesViewModel by viewModels()
+class RecipesSearchFragment : Fragment() {
+    private val viewModel: RecipesSearchViewModel by viewModels()
     private lateinit var recipesAdapter: RecipesAdapter
-    private lateinit var binding: FragmentRecipesBinding
+    private lateinit var binding: FragmentRecipesSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +33,7 @@ class RecipesFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_recipes,
+            R.layout.fragment_recipes_search,
             container,
             false,
         )
@@ -44,6 +46,7 @@ class RecipesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         observeEvents()
+        openKeyboardWhenStarted()
     }
 
     private fun initRecyclerView() {
@@ -53,8 +56,8 @@ class RecipesFragment : Fragment() {
 
     private fun observeEvents() {
         lifecycleScope.launch {
-            viewModel.recipesUiState.collect { recipesUIState ->
-                recipesAdapter.setItems(recipesUIState.recipes)
+            viewModel.recipesSearchUiState.collect { recipesSearchUiState ->
+                recipesAdapter.setItems(recipesSearchUiState.recipes)
                 binding.recipesRecyclerView.scrollToPosition(0)
             }
         }
@@ -73,19 +76,9 @@ class RecipesFragment : Fragment() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.onRecipesFavouritesClicked.collect {
+                viewModel.isBackClicked.collect {
                     if (it) {
-                        navigateToFavouritesScreen()
-                    }
-                }
-            }
-        }
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.onRecipesSearchClicked.collect {
-                    if (it) {
-                        navigateToSearchScreen()
+                        findNavController().popBackStack()
                     }
                 }
             }
@@ -94,19 +87,16 @@ class RecipesFragment : Fragment() {
 
     private fun navigateToDetailsScreen(recipeId: String) {
         findNavController().navigate(
-            RecipesFragmentDirections.actionRecipesFragmentToRecipeDetailsFragment(recipeId),
+            RecipesSearchFragmentDirections.actionRecipesSearchFragmentToRecipeDetailsFragment(
+                recipeId,
+            ),
         )
     }
 
-    private fun navigateToFavouritesScreen() {
-        findNavController().navigate(
-            RecipesFragmentDirections.actionRecipesFragmentToRecipesFavouritesFragment(),
-        )
-    }
-
-    private fun navigateToSearchScreen() {
-        findNavController().navigate(
-            RecipesFragmentDirections.actionRecipesFragmentToRecipesSearchFragment(),
-        )
+    private fun openKeyboardWhenStarted() {
+        binding.searchEditText.requestFocus()
+        val inputMethodManager =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.showSoftInput(binding.searchEditText, InputMethodManager.SHOW_IMPLICIT)
     }
 }

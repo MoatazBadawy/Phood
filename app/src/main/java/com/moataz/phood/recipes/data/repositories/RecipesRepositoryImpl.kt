@@ -70,4 +70,10 @@ class RecipesRepositoryImpl @Inject constructor(
             recipesEntities.toRecipesDomain()
         }
     }
+
+    override fun searchRecipes(searchQuery: String): Flow<List<Recipe>> {
+        return recipesLocalDatabase.searchRecipes(searchQuery).map { recipesEntities ->
+            recipesEntities.toRecipesDomain()
+        }
+    }
 }
