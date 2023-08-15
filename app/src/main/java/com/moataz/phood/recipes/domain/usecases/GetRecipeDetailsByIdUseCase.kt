@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetRecipeDetailsByIdUseCase @Inject constructor(
     private val recipesRepository: RecipesRepository,
 ) {
-    suspend operator fun invoke(id: String): Flow<Recipe> {
+    operator fun invoke(id: String): Flow<Recipe> {
         return recipesRepository.getRecipeDetailsById(id)
     }
 }
