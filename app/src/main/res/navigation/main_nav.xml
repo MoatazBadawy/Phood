@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/recipesFragment">
+
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.moataz.phood.recipes.ui.view.screens.RecipesFragment"
+        android:label="RecipesFragment"
+        tools:layout="@layout/fragment_recipes">
+        <action
+            android:id="@+id/action_recipesFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesFavouritesFragment"
+            app:destination="@id/recipesFavouritesFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesSearchFragment"
+            app:destination="@id/recipesSearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.moataz.phood.recipes.ui.view.screens.RecipeDetailsFragment"
+        android:label="fragment_recipe_details"
+        tools:layout="@layout/fragment_recipe_details">
+
+        <argument
+            android:name="recipeId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipesFavouritesFragment"
+        android:name="com.moataz.phood.recipes.ui.view.screens.RecipesFavouritesFragment"
+        android:label="RecipesFavouritesFragment"
+        tools:layout="@layout/fragment_recipes_favourites">
+        <action
+            android:id="@+id/action_recipesFavouritesFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipesSearchFragment"
+        android:name="com.moataz.phood.recipes.ui.view.screens.RecipesSearchFragment"
+        android:label="RecipesSearchFragment"
+        tools:layout="@layout/fragment_recipes_search">
+        <action
+            android:id="@+id/action_recipesSearchFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
+</navigation>
