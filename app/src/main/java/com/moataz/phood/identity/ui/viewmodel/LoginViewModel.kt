@@ -2,7 +2,7 @@ package com.moataz.phood.identity.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moataz.phood.identity.domain.usecases.LoggedInStatus
+import com.moataz.phood.identity.domain.usecases.LoggedInStatusUseCase
 import com.moataz.phood.identity.domain.usecases.SignInUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val signInUseCase: SignInUseCase,
-    private val loggedInStatusUseCase: LoggedInStatus,
+    private val loggedInStatusUseCase: LoggedInStatusUseCase,
 ) : ViewModel() {
 
     val email = MutableStateFlow("mohamed.salah@phood.com")
