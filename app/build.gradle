@@ -63,8 +63,6 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     // datastore for saving data in the local storage
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
-    // mockito for testing purposes
-    testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
     // lifecycle scope for observing data
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
@@ -77,10 +75,20 @@ dependencies {
     // retrofit for networking calls
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    // coil library for loading images
-    implementation "io.coil-kt:coil:$coil_version"
     // room database
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
+    // Identity module
+    implementation project(":identity:data:local")
+    implementation project(":identity:data:repositories")
+    implementation project(":identity:data:remote")
+    implementation project(":identity:domain:repository")
+    implementation project(":identity:ui:view")
+    // Recipes module
+    implementation project(":recipes:data:local")
+    implementation project(":recipes:data:repositories")
+    implementation project(":recipes:data:remote")
+    implementation project(":recipes:domain:repository")
+    implementation project(":recipes:ui:view")
 }
