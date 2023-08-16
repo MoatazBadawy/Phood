@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">  
-🍕 Phood: Is a modern Android app with Hilt, Coroutines, Flow, RestApi, Jetpack (Room, ViewModel), Testing (JUint5), and Material Design based on Clean architecture and MVVM architecture. And also apply Modularization.
+🍕 Phood: Is a modern Android app with Hilt, Coroutines, Flow, RestApi, Jetpack (Room, ViewModel), and Material Design based on Clean architecture and MVVM architecture. And also apply Modularization.
 </p>
 </br>
 
@@ -22,7 +22,6 @@ The application contains many branches, each branch contains a specific feature.
 I have not currently integrated any branch with the develop branch and left all the PRs open as is, to facilitate review of the code through the reviewer.
 
 ## About
-
 This version of the application has a lot of features, go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to know what's new. 
 
 https://github.com/MoatazBadawy/Phood/assets/63272288/77cd21e7-d315-46fb-9508-ed3c569df4db
