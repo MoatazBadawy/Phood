@@ -19,10 +19,10 @@
 
 ## App Story 
 The application contains many branches, each branch contains a specific feature. For every branch, I made a Pull Request to explain the new feature that was added.
-I have not currently integrated any branch with the develop branch and left all the PRs open as is, to facilitate review of the code through the reviewer.
+I have not currently merged any branch with the develop branch and left all the PRs open as is, to facilitate review of the code through the reviewer.
 
 ## About
-This version of the application has a lot of features, go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to know what's new. 
+This version of the application has a lot of features, plz go to the [Releases](https://github.com/MoatazBadawy/Phood/releases) to know what's new. 
 
 https://github.com/MoatazBadawy/Phood/assets/63272288/77cd21e7-d315-46fb-9508-ed3c569df4db
 
@@ -38,6 +38,7 @@ This project is use modularizing by feature. Every feature has it is one (data -
       + recipes/
           + data <- implements the repository interface defined in the domain layer
             - local 
+            - remote
             - repositories
           + domain <- contains UseCases that encapsulate the business logic.
             - entities 
