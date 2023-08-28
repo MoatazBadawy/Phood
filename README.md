@@ -31,7 +31,7 @@ This project follows the Clean Architecture structure and MVVM. The domain layer
 <img src="https://koenig-media.raywenderlich.com/uploads/2019/06/Clean-Architecture-graph.png" width="500" />
 
 #### Structure (App Modules)
-This project is use modularizing by feature. Every feature has it is one (data - domain - UI)
+This project uses modularizing by feature. Every feature has it is one (data - domain - UI)
 
       + App <- The main module, handles hilt providers 
       + recipes/
@@ -46,7 +46,7 @@ This project is use modularizing by feature. Every feature has it is one (data -
           + UI <- uses MVVM with ViewModels exposing StateFlow that the UI consumes.
               - view
               - viewmodel
-      + identity <- Have the same things as habits module
+      + identity <- Have the same things as recipes module
 
 #### Data and Dependenciy Flow:
 This illustration from the clean architecture book shows the dependencies between the layers in an example app and the way data flows between them. (our app uses the same thing).
@@ -59,7 +59,7 @@ This illustration from the clean architecture book shows the dependencies betwee
 - [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - Jetpack
   - Lifecycle: Observe Android lifecycles and handle UI states upon the lifecycle changes.
-  - ViewModel: Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
+  - ViewModel: Manages UI-related data holder and lifecycle awareness. Allows data to survive configuration changes such as screen rotations.
   - StateFlow: For reactive style programming (from VM to UI). 
   - DataBinding: Binds UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
   - Room: Constructs Database by providing an abstraction layer over SQLite to allow fluent database access.
