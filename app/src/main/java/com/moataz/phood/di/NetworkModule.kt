@@ -28,8 +28,8 @@ object NetworkModule {
     @Provides
     fun provideRecipesNetworkService(
         retrofit: Retrofit,
-    ): com.phood.recipes.data.remote.RecipesService {
-        return retrofit.create(com.phood.recipes.data.remote.RecipesService::class.java)
+    ): RecipesService {
+        return retrofit.create(RecipesService::class.java)
     }
 
     @Singleton
