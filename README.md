@@ -13,7 +13,7 @@
 </br>
 
 <p align="center">
-<img src="https://github.com/MoatazBadawy/Phood/assets/63272288/0373493d-0055-4c7a-bd9d-769440ce1552"/>
+<img src="https://github.com/MoatazBadawy/Phood/assets/63272288/6c81806c-ffcc-468a-ace1-731519e193f2"/>
 </p>
 
 ## App Story 
@@ -23,7 +23,7 @@ I have not currently merged any branch with the develop branch and left all the 
 ## About
 This version of the application has a lot of features, plz go to the [Releases](https://github.com/MoatazBadawy/Phood/releases) to know what's new. 
 
-https://github.com/MoatazBadawy/Phood/assets/63272288/77cd21e7-d315-46fb-9508-ed3c569df4db
+https://github.com/MoatazBadawy/Phood/assets/63272288/0123b3f4-73b8-48a8-8882-28ba034afea2
 
 #### Project Architecture
 This project follows the Clean Architecture structure and MVVM. The domain layer contains UseCases that encapsulate a single, specific task that is part of the application's business logic. The data layer implements the repository interface defined in the domain layer, providing a single source of truth for data. The UI layer uses all the components and classes related to the Android framework to get the data from the ViewModel layer and display it on the UI.
