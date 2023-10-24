@@ -70,14 +70,32 @@ This illustration from the clean architecture book shows the dependencies betwee
   - Clean Architecture (Data - Domain - UI)
   - MVVM Architecture (View - DataBinding - ViewModel - Model)
   - Repository Pattern
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
+- [Media3](https://developer.android.com/guide/topics/media/media3): New home for media libraries that enables Android apps to display rich audio and visual experiences.
+- [Coil](https://coil-kt.github.io/coil/): An image loading library for Android backed by Kotlin Coroutines.
+- [Junit5](https://junit.org/junit5/): Serves as a foundation for launching testing frameworks on the JVM.
 - [Kotlin-DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Used to handle gradle dependencies and config versions
 - [ksp](https://github.com/google/ksp): Kotlin Symbol Processing API.
-- [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
-- [Junit5](https://junit.org/junit5/): Serves as a foundation for launching testing frameworks on the JVM.
-- [Coil](https://coil-kt.github.io/coil/): An image loading library for Android backed by Kotlin Coroutines.
 
 ## TODO
 - [X] Recipes Screen
 - [X] Recipe Details Screen
 - [X] Recipes Favourites Screen
 - [X] Search for Recipes Screen
+
+## License
+```XML
+Designed and developed by 2023 Moataz Mohamed
+
+Licensed under the Apache License, Version 2.0 (the "License");
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
