@@ -18,7 +18,7 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
     val email = MutableStateFlow("mohamed.salah@phood.com")
-    val password = MutableStateFlow("Brightskies")
+    val password = MutableStateFlow("fakePassword#123")
 
     private val _isEmailValid = MutableStateFlow(true)
     val isEmailValid = _isEmailValid
