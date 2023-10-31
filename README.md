@@ -82,6 +82,8 @@ This illustration from the clean architecture book shows the dependencies betwee
 - [X] Recipe Details Screen
 - [X] Recipes Favourites Screen
 - [X] Search for Recipes Screen
+- [X] Offline Caching
+- [ ] Migrate to KMM
 
 ## License
 ```XML
