@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recipeDetailsViewModel"
+            type="com.phood.recipes.ui.viewmodel.RecipeDetailsViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:showIfTrue="@{recipeDetailsViewModel.recipeDetailsUiState.successful}">
+
+                <ImageView
+                    android:id="@+id/recipe_details_image_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_225sdp"
+                    android:contentDescription="@string/recipe_details_background"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@drawable/img_recipe_fake" />
+
+                <ImageButton
+                    android:id="@+id/button_favorites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/favourites_recipes_button"
+                    android:onClick="@{(id) -> recipeDetailsViewModel.updateRecipeFavorite(recipeDetailsViewModel.recipeDetailsUiState.recipe.id)}"
+                    android:padding="6dp"
+                    app:changeFavoriteIcon="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.isFavorite}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_favorite_black"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageButton
+                    android:id="@+id/button_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/search_recipes_button"
+                    android:onClick="@{(v) -> recipeDetailsViewModel.onBackClicked()}"
+                    android:padding="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_back"
+                    tools:ignore="RtlHardcoded" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="#59000000"
+                    app:layout_constraintBottom_toBottomOf="@+id/recipe_details_image_background"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/recipe_details_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.time}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintEnd_toEndOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="@+id/view"
+                    app:layout_constraintTop_toTopOf="@+id/view"
+                    tools:text="PT35M" />
+
+                <TextView
+                    android:id="@+id/recipe_title_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipe_details_image_background"
+                    tools:text="Crispy Fish Goujons " />
+
+                <TextView
+                    android:id="@+id/recipe_info_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.headline}"
+                    android:textColor="#959595"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/recipe_title_textview"
+                    app:layout_constraintStart_toStartOf="@+id/recipe_title_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/recipe_title_textview"
+                    tools:text="with Sweet Potato Wedges and Minted Snap Peas" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/search_recipes_button"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipe_info_textview"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/search_recipes_button"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/search_recipes_button"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:background="@drawable/circle_button_style"
+                    android:contentDescription="@string/search_recipes_button"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.fats}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton"
+                    tools:text="6 g" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.carbos}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton2"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                    tools:text="29 g" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:caloriesText="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.calories}"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton3"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                    tools:text="458" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.proteins}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton4"
+                    tools:text="29 g" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/fats"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/carbos"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/calories"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/proteins"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:text="@string/description"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/recipe_description_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.description}"
+                    android:textColor="#959595"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/recipe_title_textview"
+                    app:layout_constraintStart_toStartOf="@+id/recipe_title_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    tools:text="There’s nothing like the simple things in life - the smell of freshly cut grass, sitting outside on a nice sunny day, spending time with friends and family. Well here is a recipe that delivers simple culinary pleasures - some nice fresh fish with a crispy crust, crunchy potato wedges and some delightfully sweet sugar snap peas flavoured with cooling mint. Slip into something comfortable and relax into a delicious dinner!" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/ingredients"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipe_description_textview" />
+
+                <TextView
+                    android:id="@+id/recipe_ingredients_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#959595"
+                    android:textSize="@dimen/_12ssp"
+                    app:formattedIngredients="@{recipeDetailsViewModel.recipeDetailsUiState.recipe.ingredients}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/recipe_title_textview"
+                    app:layout_constraintStart_toStartOf="@+id/recipe_title_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"
+                    tools:text="375g Sweet Potatoes\n1 Tsp Paprika\n2 Tbsps Parmesan Cheese\n1 Lemon\nA Few Sprigs Thyme\n25g Panko Breadcrumbs\n1 Tbsp Butter\n2 Cod Fillets\n150g Sugar Snap Peas\nA Few Sprigs Mint\n75ml Sour Cream" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/black"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showIfTrue="@{recipeDetailsViewModel.recipeDetailsUiState.loading}" />
+
+            <ImageView
+                android:layout_width="152dp"
+                android:layout_height="204dp"
+                android:contentDescription="@string/error_icon"
+                android:src="@drawable/error"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showIfTrue="@{recipeDetailsViewModel.recipeDetailsUiState.error}" />
+
+            <TextView
+                android:id="@+id/error_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_180sdp"
+                android:text="@string/error_message"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:showIfTrue="@{recipeDetailsViewModel.recipeDetailsUiState.error}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
